@@ -1,8 +1,7 @@
 # **IAV Human Adaptation Analysis**
 
-This repository contains the computational pipeline used to **replicate key analyses and visualizations** from our study,  
-**"Decoding Non-Human Mammalian Adaptive Signatures of 2.3.4.4b H5N1 to Assess Its Human Adaptive Potential"**, available on **bioRxiv**  
-[**here**](https://www.biorxiv.org/content/10.1101/2024.08.26.609722v1).  
+This repository contains the computational pipeline used to replicate key analyses and visualizations from our study,  
+**"Decoding Non-Human Mammalian Adaptive Signatures of 2.3.4.4b H5N1 to Assess Its Human Adaptive Potential"**, available on bioRxiv [**here**](https://www.biorxiv.org/content/10.1101/2024.08.26.609722v1).  
 
 The study investigates the molecular evolution and mammalian adaptation potential of the **2.3.4.4b H5N1 influenza A virus (IAV)** by integrating:
 - **Comparative sequence analysis**  
@@ -50,10 +49,10 @@ pip install -r requirements.txt
 ## **Key Scripts & Their Functions**
 ### `scripts/radar_data_mammal.py`
 Processes **FASTA sequences** and a **mutation signature CSV file** to:  
-✅ Extract IAV protein sequences  
-✅ Identify host-specific mutation sites  
-✅ Count acquired vs. missing mutations  
-✅ Save output as `mutation_data.csv`  
+1. Extract IAV protein sequences
+2.  Identify host-specific mutation sites
+3.  Count acquired vs. missing mutations
+4.  Save output as `mutation_data.csv`  
 
 **Run it with:**
 ```bash
@@ -62,9 +61,9 @@ python scripts/radar_data_mammal.py data/protein_sequences.fasta data/mutation_s
 
 ### `scripts/radar_mammal.py`
 Reads `mutation_data.csv` and generates a **radar plot** highlighting unacquired mutations across viral proteins.  
-✅ Assigns unique angles per protein  
-✅ Plots mutation bottlenecks in a **polar coordinate system**  
-✅ Saves as `radar_plot.png`  
+1. Assigns unique angles per protein  
+2. Plots mutation bottlenecks in a **polar coordinate system**  
+3. Saves as `radar_plot.png`  
 
 **Run it with:**
 ```bash
@@ -73,9 +72,9 @@ python scripts/radar_mammal.py results/mutation_data.csv results/radar_plot.png
 
 ### `scripts/plot_heatmap.py`
 Creates a **heatmap** of mutation frequencies, highlighting **highly mutable residues** across viral proteins.  
-✅ Organizes mutations into a **matrix**  
-✅ Uses Seaborn for visualization  
-✅ Saves the heatmap as `heatmap.png`  
+1. Organizes mutations into a **matrix**
+2. Uses Seaborn for visualization  
+3. Saves the heatmap as `heatmap.png`  
 
 **Run it with:**
 ```bash
@@ -133,7 +132,7 @@ Outputs will be stored as:
 ---
 
 ## **License**
-📜 MIT License
+MIT License
 
 ## **Contributors**
 👩‍🔬 **Ranjana Nataraj** (@ranjanaanataraj)
