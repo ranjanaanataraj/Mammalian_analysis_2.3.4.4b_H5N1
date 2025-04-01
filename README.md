@@ -5,14 +5,16 @@ This repository contains scripts to analyze mutations in influenza A virus (IAV)
 1. **Extracting full-length sequences** from a given FASTA file.
 2. **Identifying mutations** that differentiate avian and mammalian consensus sequences.
 3. **Counting mutation frequencies** at key positions.
-4. **Visualizing results** using heatmaps and radar plots.
+4. **Calculating dN/dS ratios** using `codeml` to infer selection pressure.
+5. **Visualizing results** using heatmaps and radar plots.
 
 ## Repository Structure
 ```
 📂 IAV_Human_Adaptation_Analysis
-│── 📂 data/              # Example input files (FASTA, CSV)
+│── 📂 data/              # Example input files (FASTA, CSV, codeml config/output)
 │── 📂 scripts/           # Processing and visualization scripts
 │── 📂 results/           # Generated plots and processed data
+│── 📂 codeml/            # Example PAML codeml input/output files
 │── 📜 README.md          # Project overview and usage instructions
 │── 📜 requirements.txt   # Dependencies for easy setup
 ```
@@ -65,10 +67,36 @@ This script generates a **heatmap** of mutation frequencies at key positions, al
 python scripts/plot_heatmap.py results/mutation_data.csv results/heatmap.png
 ```
 
+### `codeml/`
+This folder contains **PAML codeml configuration files** used to calculate dN/dS ratios and infer selection pressure on IAV proteins. The logic is as follows:
+
+1. **`codeml_model0.ctl`** – Runs a **basic dN/dS (ω) calculation** assuming a **single ω ratio across all sites**, giving an overall measure of selection.
+2. **`codeml_branch_site.ctl`** – Uses a **branch-site model** to detect **positively selected residues** specific to mammalian or avian hosts.
+3. **`codeml_ancestor.ctl`** – Reconstructs **ancestral sequences**, allowing comparison of evolutionary changes and identifying sites under selection pressure.
+
+### **Why We Did This?**
+
+- The mismatch residues identified in `mismatch_indices.py` are tested for **positive selection** to confirm if they are functionally important.
+- The **branch-site model** helps determine if any **host-specific selection** is occurring, which could indicate adaptation to mammalian hosts.
+- Ancestral reconstruction allows us to **trace the evolutionary history** of these sites and understand whether mutations were driven by natural selection.
+- If residues under selection pressure correspond to those required for mammalian adaptation, this provides evidence that they play a role in **host switching and virulence**.
+
+### **How to Run `codeml`?**
+To run the selection analysis:
+```bash
+codeml codeml/codeml_model0.ctl
+codeml codeml/codeml_branch_site.ctl
+codeml codeml/codeml_ancestor.ctl
+```
+Each will generate an output file (e.g., `results_model0.txt`, `results_branch_site.txt`, `results_ancestor.txt`).
+
 ## Output
 - `mutation_data.csv`: Processed mutation counts per protein.
 - `radar_plot.png`: Radar chart showing missing mutations.
 - `heatmap.png`: Heatmap of mutation frequencies.
+- `codeml/results_model0.txt`: dN/dS values for overall selection pressure.
+- `codeml/results_branch_site.txt`: Positively selected sites specific to avian or mammalian hosts.
+- `codeml/results_ancestor.txt`: Ancestral state reconstruction of key residues.
 
 ## License
 MIT License
