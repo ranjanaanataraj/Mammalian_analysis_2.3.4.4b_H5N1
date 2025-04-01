@@ -1,6 +1,21 @@
 # IAV Human Adaptation Analysis
 
-This repository contains scripts to analyze mutations in influenza A virus (IAV) proteins to assess how many mutations are required for human adaptation. The workflow involves:
+This repository contains the computational pipeline used to replicate key analyses and visualizations from our study, **"Decoding non-human mammalian adaptive signatures of 2.3.4.4b H5N1 to assess its human adaptive potential"**, available on bioRxiv (https://www.biorxiv.org/content/10.1101/2024.08.26.609722v1). The study investigates the molecular evolution and mammalian adaptation potential of the 2.3.4.4b H5N1 influenza A virus (IAV) by integrating comparative sequence analysis, evolutionary selection pressure modeling, and structural insights.
+Our approach systematically:
+
+Curates full-length viral protein sequences to exclude incomplete or ambiguous entries.
+
+Computes consensus sequences for avian and mammalian isolates and identifies amino acid residues exhibiting host-specific divergence.
+
+Quantifies the selective pressures acting on these residues using codeml (dN/dS) models, including branch-site and ancestral reconstruction frameworks, to infer potential functional significance.
+
+Characterizes residue-specific frequency distributions across avian and mammalian isolates to assess fixation trends.
+
+Generates heatmaps and radar plots to visualize host adaptation bottlenecks across key viral proteins (HA, NA, PB2, PB1, PA, NS1), identifying residues yet to be acquired for optimal mammalian adaptation.
+
+This repository provides fully reproducible scripts for sequence processing, mismatch residue identification, evolutionary analysis, and figure generation, enabling robust exploration of 2.3.4.4b H5N1 adaptation dynamics.
+
+
 
 1. **Extracting full-length sequences** from a given FASTA file.
 2. **Identifying mutations** that differentiate avian and mammalian consensus sequences.
