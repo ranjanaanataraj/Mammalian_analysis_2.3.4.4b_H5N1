@@ -1,7 +1,7 @@
 # **2.3.4.4b H5N1 Mammalian adaptation analysis** 🦆 🦠 🐄 🦭 🦊
 
 This repository contains the computational pipeline used to replicate key analyses and visualizations from our study,  
-**"Decoding Non-Human Mammalian Adaptive Signatures of 2.3.4.4b H5N1 to Assess Its Human Adaptive Potential"**, available on bioRxiv [**here**](https://www.biorxiv.org/content/10.1101/2024.08.26.609722v1).  
+[**"Decoding Non-Human Mammalian Adaptive Signatures of 2.3.4.4b H5N1 to Assess Its Human Adaptive Potential"**],(https://www.biorxiv.org/content/10.1101/2024.08.26.609722v1).  
 
 The study investigates the molecular evolution and mammalian adaptation potential of the **2.3.4.4b H5N1 influenza A virus (IAV)** by integrating:
 - **Comparative sequence analysis**  
